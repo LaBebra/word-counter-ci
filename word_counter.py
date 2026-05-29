@@ -22,3 +22,9 @@ def extract_words(text: str) -> list:
 def count_words(words: list) -> Counter:
     """Count occurrences of each word and return a Counter object."""
     return Counter(words)
+
+def get_top_words(counter: Counter, n: int = 10) -> list:
+    """Return the top n most common words as a list of (word, count) tuples."""
+    if n <= 0:
+        raise ValueError("n must be a positive integer")
+    return counter.most_common(n)
