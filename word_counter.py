@@ -28,3 +28,10 @@ def get_top_words(counter: Counter, n: int = 10) -> list:
     if n <= 0:
         raise ValueError("n must be a positive integer")
     return counter.most_common(n)
+
+def write_results(top_words: list, output_filepath: str) -> None:
+    """Write top words to a file in 'word-count' format."""
+    path = Path(output_filepath)
+    with open(path, "w", encoding="utf-8") as f:
+        for word, count in top_words:
+            f.write(f"{word}-{count}\n")
