@@ -18,3 +18,7 @@ def extract_words(text: str) -> list:
     """Extract all words from text, lowercased, ignoring punctuation."""
     words = re.findall(r"\b[a-zA-Zа-яА-ЯіІїЇєЄґҐ']+\b", text.lower())
     return words    
+
+def count_words(words: list) -> Counter:
+    """Count occurrences of each word and return a Counter object."""
+    return Counter(words)
