@@ -35,3 +35,22 @@ def write_results(top_words: list, output_filepath: str) -> None:
     with open(path, "w", encoding="utf-8") as f:
         for word, count in top_words:
             f.write(f"{word}-{count}\n")
+
+def process_file(input_filepath: str, output_filepath: str, top_n: int = 10) -> list:
+    """Full pipeline: read → extract → count → top N → write."""
+    text = read_file(input_filepath)
+    words = extract_words(text)
+    counter = count_words(words)
+    top_words = get_top_words(counter, top_n)
+    write_results(top_words, output_filepath)
+    return top_words
+
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) < 3:
+        print("Usage: python word_counter.py <input.txt> <output.txt>")
+        sys.exit(1)
+    results = process_file(sys.argv[1], sys.argv[2])
+    for word, count in results:
+        print(f"  {word}-{count}")                
