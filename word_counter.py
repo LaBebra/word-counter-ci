@@ -14,4 +14,7 @@ def read_file(filepath: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
     
-    
+def extract_words(text: str) -> list:
+    """Extract all words from text, lowercased, ignoring punctuation."""
+    words = re.findall(r"\b[a-zA-Zа-яА-ЯіІїЇєЄґҐ']+\b", text.lower())
+    return words    
