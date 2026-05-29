@@ -5,7 +5,6 @@ Uses fixtures and parametrization as required.
 
 import pytest
 from collections import Counter
-from pathlib import Path
 
 from word_counter import (
     read_file,
